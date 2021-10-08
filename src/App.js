@@ -4,8 +4,8 @@ import Search from './Search';
 function App() {
   return (
     <div className="App">
-     <div class="container">
-        <div class="card shadow">
+     <div className="container">
+        <div className="card shadow">
           <Search />
         </div>
       </div>
