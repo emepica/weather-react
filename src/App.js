@@ -1,9 +1,9 @@
 import './App.css';
-
 import "bootstrap/dist/css/bootstrap.css";
 import Search from './Search';
 import UpdateInfo from './UpdateInfo';
 import Current from './Current';
+import Forecast from './Forecast';
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
           <Search />
           <UpdateInfo/>
           <Current/>
+          <Forecast/>
         </div>
       </div>
       <footer>
