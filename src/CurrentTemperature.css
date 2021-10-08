@@ -1,0 +1,21 @@
+img {
+    float: left;
+    max-width: 60px;
+    vertical-align: middle;
+  }
+  .current {
+    float: left;
+  }
+  .current-temperature {
+    font-size: 60px;
+    font-weight: bold;
+    color: thistle;
+    position: relative;
+    float: left;
+  }
+  .units {
+    margin-top: 20px;
+    position: relative;
+    float: left;
+  }
+  

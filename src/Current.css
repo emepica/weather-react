@@ -1,0 +1,20 @@
+.Current {
+    margin: 20px;
+    text-align: left;
+  }
+  h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 50px;
+    color: black;
+  }
+  .country {
+    color: black;
+  }
+  ul {
+    padding: 0px;
+  }
+  li {
+    list-style: none;
+  }
+  

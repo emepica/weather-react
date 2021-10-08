@@ -1,9 +1,12 @@
 .App {
-  text-align: left;
-  background-color: thistle;
+  text-align: center;
   max-width: 850px;
 }
 .card {
   margin: 0 auto;
   margin-top: 20px;
+}
+footer{
+  margin-top: 20px;
+  font-size: 10px;
 }
