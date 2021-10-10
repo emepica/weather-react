@@ -1,12 +1,14 @@
 import React from "react";
+import axios from "axios";
 import "./Current.css";
 import CurrentTemperature from "./CurrentTemperature";
 
-export default function Current() {
+export default function Current(response) {
+
   
   return (
     <div className="Current">
-      <h1>Brussels</h1>
+      <h1> Brussels </h1>
       <span className="country" id="country">
         Belgium
       </span>

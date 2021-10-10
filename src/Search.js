@@ -5,7 +5,7 @@ import Current from "./Current";
 
 
  function Search(){
-    const [city, setCity] = useState(null);
+    const [city, setCity] = useState("Brussels");
   
     function updateCity (event){
       event.preventDefault();
@@ -29,7 +29,7 @@ import Current from "./Current";
           <div>
             <input
               type="text"
-              className="input-form mt-20 mb-3 shadow-sm search-bar"
+              className="input-form mt-20 mb-3 shadow-sm search-bar w-100"
               placeholder="Type a city"
               id="city-text-input"
               aria-label="Type a city"
@@ -39,7 +39,7 @@ import Current from "./Current";
             />
             <button
               type="submit"
-              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar"
+              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar "
               id="button-search-submit"
             >
               Search
@@ -47,7 +47,7 @@ import Current from "./Current";
   
             <button
               type="submit"
-              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar right"
+              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar right "
               id="button-current-location-submit"
             >
               Current Location
