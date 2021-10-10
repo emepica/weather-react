@@ -3,10 +3,7 @@ import "./Current.css";
 import CurrentTemperature from "./CurrentTemperature";
 
 export default function Current() {
-  let overviewData = {
-    city: "Brussels",
-    temperature: 20
-  };
+  
   return (
     <div className="Current">
       <h1>Brussels</h1>

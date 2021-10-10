@@ -2,11 +2,10 @@ import React, {useState} from "react";
 import "./Search.css";
 import axios from "axios";
 import Current from "./Current";
-import UpdateInfo from "./UpdateInfo";
+
 
  function Search(){
     const [city, setCity] = useState(null);
-    const [current, setCurrent] = useState(null);
   
     function updateCity (event){
       event.preventDefault();
@@ -14,20 +13,7 @@ import UpdateInfo from "./UpdateInfo";
     };
 
     function updateWeatherInfo (response){
-      setCurrent(
-        <div className="Current">
-        <ul>
-          <li>{response.data.name}</li>
-          <li>Temperature: {Math.round(response.data.main.temp)}°C</li>
-          <li>Description: {response.data.weather[0].description} </li>
-          <li>Humidity: {response.data.main.humidity} %</li>
-          <li>Wind: {Math.round(response.data.wind.speed)} km/h</li>
-          <li>
-            <img src={`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`} alt={response.data.weather[0].description} />{" "}
-          </li>
-        </ul>
-      </div>
-      );
+      <Current response="response"/>
 
     }
   
@@ -54,7 +40,6 @@ import UpdateInfo from "./UpdateInfo";
             <button
               type="submit"
               className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar"
-              type="button"
               id="button-search-submit"
             >
               Search
@@ -63,7 +48,6 @@ import UpdateInfo from "./UpdateInfo";
             <button
               type="submit"
               className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar right"
-              type="button"
               id="button-current-location-submit"
             >
               Current Location

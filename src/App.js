@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
      <div className="container">
-        <div className="card shadow">
+        <div className="card shadow mx-auto d-flex">
           <Search />
           <UpdateInfo/>
           <Current/>
