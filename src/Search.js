@@ -4,38 +4,43 @@ import axios from "axios";
 import Current from "./Current";
 
 
- function Search(){
-    const [city, setCity] = useState("Brussels");
-  
-    function updateCity (event){
-      event.preventDefault();
-      setCity(event.target.value);
-    };
+ function Search(props){
+    const [weatherData, setWeatherData] = useState({ ready: false });
+    const [city, setCity] = useState(props.defaultCity);
 
     function updateWeatherInfo (response){
-      <Current response="response"/>
-
+      console.log(response.data);  
+       setWeatherData({
+        ready: true,
+        coordinates: response.data.coord,
+        temperature: response.data.main.temp,
+        feels: Math.round(response.data.main.feels_like),
+        minTemp: Math.round(response.data.main.temp_min),
+        maxTemp: Math.round(response.data.main.temp_max),
+        humidity: response.data.main.humidity,
+        date: new Date(response.data.dt * 1000),
+        description: response.data.weather[0].description,
+        icon: response.data.weather[0].icon,
+        wind: response.data.wind.speed,
+        city: response.data.name,
+        country: response.data.sys.country,
+      });
     }
   
-    function handleSubmit (event) {
-      event.preventDefault();
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7f10d25441a1a7ff7317938abc53019d`;
-      axios.get(url).then(updateWeatherInfo);
-    };
+
   
-    return (
+    if (weatherData.ready) {return (
       <div className="Search">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div>
             <input
               type="text"
-              className="input-form mt-20 mb-3 shadow-sm search-bar w-100"
+              className="input-form mt-20 mb-3 shadow-sm search-bar"
               placeholder="Type a city"
               id="city-text-input"
               aria-label="Type a city"
-              autocomplete="off"
-              autofocus="off"
-              onChange={updateCity}
+              autoComplete="off"
+              autoFocus="off"
             />
             <button
               type="submit"
@@ -54,8 +59,13 @@ import Current from "./Current";
             </button>
           </div>
         </form>
+        <Current data = {weatherData}/>
       </div>
-    );
+    );} else {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7f10d25441a1a7ff7317938abc53019d`;
+      axios.get(url).then(updateWeatherInfo);
+      return ("Loading...");
+    }
 }
 
 export default Search;

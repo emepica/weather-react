@@ -1,8 +1,6 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 import Search from './Search';
-import UpdateInfo from './UpdateInfo';
-import Current from './Current';
 import Forecast from './Forecast';
 
 
@@ -11,9 +9,7 @@ function App() {
     <div className="App">
      <div className="container">
         <div className="card shadow mx-auto d-flex">
-          <Search />
-          <UpdateInfo/>
-          <Current/>
+          <Search defaultCity = "Brussels"/>
           <Forecast/>
         </div>
       </div>

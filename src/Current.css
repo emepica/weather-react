@@ -7,6 +7,7 @@
     margin-bottom: 0px;
     font-size: 50px;
     color: black;
+    display: inline;
   }
   .country {
     color: black;

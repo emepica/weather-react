@@ -1,16 +1,16 @@
 import React from "react";
-import axios from "axios";
 import "./Current.css";
+import UpdateInfo from "./UpdateInfo";
 import CurrentTemperature from "./CurrentTemperature";
 
-export default function Current(response) {
-
-  
+export default function Current(props) {
+  console.log(props);
   return (
     <div className="Current">
-      <h1> Brussels </h1>
+      <UpdateInfo/>
+      <h1> {props.data.city} </h1>
       <span className="country" id="country">
-        Belgium
+        {props.data.country}
       </span>
       <p className="info" id="locale-date">
         Sunday 10:10
@@ -19,9 +19,9 @@ export default function Current(response) {
         <div className="row">
           <div className="col-md-3">
             <ul className="overview-info">
-              <li>Clear </li>
-              <li>Clear sky</li>
-              <li>Feels like 21°C</li>
+              <li>Today: </li>
+              <li className="text-capitalize">{props.data.description}</li>
+              <li>Feels like {props.data.feels}°C</li>
             </ul>
           </div>
           <div className="col-md-4">
@@ -29,9 +29,9 @@ export default function Current(response) {
           </div>
           <div className="col-md-3">
             <ul className="overview-details">
-              <li>19 °c/ 22 °c</li>
-              <li>Humidity 65%</li>
-              <li>Wind 1 km/h</li>
+              <li>{props.data.minTemp}°C / {props.data.maxTemp}°C</li>
+              <li>Humidity: {props.data.humidity}%</li>
+              <li>Wind: {Math.round(props.data.wind)} km/h</li>
             </ul>
           </div>
           <div className="col-md-2">
