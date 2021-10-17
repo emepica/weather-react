@@ -2,6 +2,7 @@ import React from "react";
 import "./Current.css";
 import UpdateInfo from "./UpdateInfo";
 import CurrentTemperature from "./CurrentTemperature";
+import { FormattedDate } from "./FormattedDate";
 
 export default function Current(props) {
   console.log(props);
@@ -13,7 +14,7 @@ export default function Current(props) {
         {props.data.country}
       </span>
       <p className="info" id="locale-date">
-        Sunday 10:10
+        <FormattedDate date = {props.data.date}/>
       </p>
       <div className="container">
         <div className="row">
