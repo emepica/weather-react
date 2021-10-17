@@ -6,7 +6,7 @@ import Current from "./Current";
 
  function Search(props){
     const [weatherData, setWeatherData] = useState({ ready: false });
-    const [city, setCity] = useState(props.defaultCity);
+    const city = props.defaultCity;
 
     function updateWeatherInfo (response){
       console.log(response.data);  
