@@ -25,7 +25,7 @@ export default function Current(props) {
             </ul>
           </div>
           <div className="col-md-4">
-            <CurrentTemperature />
+            <CurrentTemperature temperature = {props.data.temperature} icon = {props.data.icon} description = {props.data.description}/>
           </div>
           <div className="col-md-3">
             <ul className="overview-details">

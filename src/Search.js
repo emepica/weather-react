@@ -13,7 +13,7 @@ import Current from "./Current";
        setWeatherData({
         ready: true,
         coordinates: response.data.coord,
-        temperature: response.data.main.temp,
+        temperature: Math.round(response.data.main.temp),
         feels: Math.round(response.data.main.feels_like),
         minTemp: Math.round(response.data.main.temp_min),
         maxTemp: Math.round(response.data.main.temp_max),
