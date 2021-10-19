@@ -6,7 +6,7 @@ import Current from "./Current";
 
  function Search(props){
     const [weatherData, setWeatherData] = useState({ ready: false });
-    const city = props.defaultCity;
+    const [city, setCity] = useState(props.defaultCity);
 
     function updateWeatherInfo (response){
       console.log(response.data);  
@@ -27,11 +27,24 @@ import Current from "./Current";
       });
     }
   
+    function searchCity(){
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7f10d25441a1a7ff7317938abc53019d`;
+      axios.get(url).then(updateWeatherInfo);
+    }
+
+    function handleSubmit(event){
+      event.preventDefault();
+      searchCity(); 
+    }
+    function handleCity(event){
+    setCity(event.target.value);
+
+    }
 
   
     if (weatherData.ready) {return (
       <div className="Search">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
@@ -41,6 +54,7 @@ import Current from "./Current";
               aria-label="Type a city"
               autoComplete="off"
               autoFocus="off"
+              onChange={handleCity}
             />
             <button
               type="submit"
@@ -62,8 +76,7 @@ import Current from "./Current";
         <Current data = {weatherData}/>
       </div>
     );} else {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7f10d25441a1a7ff7317938abc53019d`;
-      axios.get(url).then(updateWeatherInfo);
+      searchCity();
       return ("Loading...");
     }
 }
