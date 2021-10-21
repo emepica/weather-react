@@ -12,7 +12,7 @@ export default function CurrentTemperature(props) {
         </div>
       <div className="current temperatures">
         <span className="current-temperature">{props.temperature}</span>
-        <span className="units">°C</span>
+        <span className="units">{props.unit.format}</span>
       </div>
       </div>
     </div>

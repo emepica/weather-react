@@ -35,4 +35,9 @@
     background-color: thistle;
     border-color: rgb(179, 150, 179);
   }
+.active{
+  background-color: #f6effa !important;
+  border-color:rgb(179, 150, 179) !important;
+  color:#6c757d!important;
+}
   

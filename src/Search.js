@@ -7,7 +7,14 @@ import Current from "./Current";
  function Search(props){
     const [weatherData, setWeatherData] = useState({ ready: false });
     const [city, setCity] = useState(props.defaultCity);
+    const [unit, setUnit] = useState({
+      system:"metric",
+      format:"°C",
+      speed:"km/h",
+      fahrenheit:false,
+      celcius:true});
 
+   
     function updateWeatherInfo (response){
       console.log(response.data);  
        setWeatherData({
@@ -28,7 +35,7 @@ import Current from "./Current";
     }
   
     function searchCity(){
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7f10d25441a1a7ff7317938abc53019d`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit.system}&appid=7f10d25441a1a7ff7317938abc53019d`;
       axios.get(url).then(updateWeatherInfo);
     }
 
@@ -38,17 +45,48 @@ import Current from "./Current";
     }
     function handleCity(event){
     setCity(event.target.value);
+    }
 
+    function showCelcius(event){
+      event.preventDefault();
+      setUnit({
+        system:"metric",
+        format:"°C",
+        speed:"km/h",
+        fahrenheit:false,
+        celcius:true});
+        searchCity();
+    }
+
+    function showFahrenheit(event){
+      event.preventDefault();
+      setUnit({
+        system:"imperial",
+        format:"°F",
+        speed:"mph",
+        fahrenheit:true,
+        celcius:false});
+      searchCity();
     }
 
   
     if (weatherData.ready) {return (
       <div className="Search">
+        <div className="d-flex justify-content-end me-3">
+        <button 
+            type="checkbox"
+            className={`btn btn-outline-secondary mt-3 me-2 shadow-sm celciusBtn ${unit.celcius ? "active":""}`}
+            onClick={showCelcius}> °C </button>
+        <button 
+            type="checkbox"
+            className={`btn btn-outline-secondary mt-3 ms-2 shadow-sm fahrenheitBtn ${unit.fahrenheit ? "active":""}`}
+            onClick={showFahrenheit}> °F </button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
-              className="input-form mt-20 mb-3 shadow-sm search-bar"
+              className="input-form mb-3 shadow-sm search-bar"
               placeholder="Type a city"
               id="city-text-input"
               aria-label="Type a city"
@@ -58,7 +96,7 @@ import Current from "./Current";
             />
             <button
               type="submit"
-              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar "
+              className="btn btn-outline-secondary mb-3 shadow-sm search-bar "
               id="button-search-submit"
             >
               Search
@@ -66,14 +104,14 @@ import Current from "./Current";
   
             <button
               type="submit"
-              className="btn btn-outline-secondary mt-20 mb-3 shadow-sm search-bar right "
+              className="btn btn-outline-secondary mb-3 shadow-sm search-bar right "
               id="button-current-location-submit"
             >
               Current Location
             </button>
           </div>
         </form>
-        <Current data = {weatherData}/>
+        <Current data = {weatherData} unit={unit}/>
       </div>
     );} else {
       searchCity();

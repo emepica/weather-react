@@ -22,17 +22,17 @@ export default function Current(props) {
             <ul className="overview-info">
               <li>Today: </li>
               <li className="text-capitalize">{props.data.description}</li>
-              <li>Feels like {props.data.feels}°C</li>
+              <li>Feels like {props.data.feels}{props.unit.format}</li>
             </ul>
           </div>
           <div className="col-md-4">
-            <CurrentTemperature temperature = {props.data.temperature} icon = {props.data.icon} description = {props.data.description}/>
+            <CurrentTemperature temperature = {props.data.temperature} icon = {props.data.icon} description = {props.data.description} unit={props.unit}/>
           </div>
           <div className="col-md-3">
             <ul className="overview-details">
-              <li>{props.data.minTemp}°C / {props.data.maxTemp}°C</li>
+              <li>{props.data.minTemp} {props.unit.format} / {props.data.maxTemp}{props.unit.format}</li>
               <li>Humidity: {props.data.humidity}%</li>
-              <li>Wind: {Math.round(props.data.wind)} km/h</li>
+              <li>Wind: {Math.round(props.data.wind)} {props.unit.speed}</li>
             </ul>
           </div>
           <div className="col-md-2">
