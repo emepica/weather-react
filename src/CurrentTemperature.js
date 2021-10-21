@@ -6,8 +6,8 @@ export default function CurrentTemperature(props) {
   return (
     <div className="CurrentTemperature">
       
-      <div className="clearfix">
-        <div className="float-left">
+      <div className="d-flex">
+        <div className="d-vertical-center ">
         <WeatherIcon data = {props.icon}/>
         </div>
       <div className="current temperatures">
