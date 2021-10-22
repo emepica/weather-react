@@ -14,7 +14,7 @@ export default function Current(props) {
         {props.data.country}
       </span>
       <p className="info" id="locale-date">
-        <FormattedDate date = {props.data.date}/>
+        <FormattedDate date = {props.data.date} timezone={props.data.timezone}/>
       </p>
       <div className="container">
         <div className="row">

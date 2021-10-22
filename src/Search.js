@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./Search.css";
 import axios from "axios";
 import Current from "./Current";
@@ -35,11 +35,11 @@ import Current from "./Current";
         wind: response.data.wind.speed,
         city: response.data.name,
         country: response.data.sys.country,
+        timezone: response.data.timezone,
       });
     }
     //sunrise: response.data.sys.sunrise,
         //sunset: response.data.sys.sunset,
-        //timezone: response.data.timezone,
         //sunriseTime: (response.data.sys.sunrise*1000+(timeOffset))+(response.data.timezone*1000),
         //sunsetTime: (response.data.sys.sunset*1000+(timeOffset))+(response.data.timezone*1000),
   
@@ -63,8 +63,7 @@ import Current from "./Current";
         format:"°C",
         speed:"km/h",
         fahrenheit:false,
-        celcius:true}, [searchCity()]);
-      
+        celcius:true});
     }
 
     function showFahrenheit(event){
@@ -74,12 +73,12 @@ import Current from "./Current";
         format:"°F",
         speed:"mph",
         fahrenheit:true,
-        celcius:false},[searchCity()])
+        celcius:false})
     }
 
-    //function useEffect(){
-      //searchCity(),
-      //[unit]};
+    useEffect(() => {
+      searchCity();
+    }, [unit]);
   
     if (weatherData.ready) {return (
       <div className="Search">

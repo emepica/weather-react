@@ -2,7 +2,7 @@ import React from "react";
 import "./UpdateInfo.css";
 
 export default function UpdateInfo(props) {
-  console.log(props.date);
+  console.log(props);
   const weekdays =["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   let hours = props.date.getHours();
   if (hours<10) {
@@ -11,6 +11,8 @@ export default function UpdateInfo(props) {
   if (minutes<10) {
     minutes =`0${minutes}`;  }
   let day =weekdays[props.date.getDay()];
+  //let timeOffset = props.date.getTimeOffset()/60;
+  //let adjustedDate= props.date.getDate()-props.date.getTimeOffset();
 
 
   return (
