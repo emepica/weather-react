@@ -40,6 +40,7 @@ import Current from "./Current";
     }
     //sunrise: response.data.sys.sunrise,
         //sunset: response.data.sys.sunset,
+        
         //sunriseTime: (response.data.sys.sunrise*1000+(timeOffset))+(response.data.timezone*1000),
         //sunsetTime: (response.data.sys.sunset*1000+(timeOffset))+(response.data.timezone*1000),
   
@@ -64,6 +65,7 @@ import Current from "./Current";
         speed:"km/h",
         fahrenheit:false,
         celcius:true});
+      
     }
 
     function showFahrenheit(event){

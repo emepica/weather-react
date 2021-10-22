@@ -6,9 +6,10 @@ import { FormattedDate } from "./FormattedDate";
 
 export default function Current(props) {
   console.log(props);
+ 
   return (
     <div className="Current">
-      <UpdateInfo date = {props.data.date}/>
+      <UpdateInfo date = {props.data.date} timezone={props.data.timezone}/>
       <h1> {props.data.city} </h1>
       <span className="country" id="country">
         {props.data.country}
