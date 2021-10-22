@@ -1,6 +1,10 @@
 import React from "react";
 
 export function FormattedDate(props){
+  //let now = new Date(props.date);
+  //let time = now.getTime();
+  //let timeOffset = props.date.getTimezoneOffset()*60000;
+
     const weekdays =["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     let hours = props.date.getHours();
     if (hours<10) {

@@ -13,10 +13,14 @@ import Current from "./Current";
       speed:"km/h",
       fahrenheit:false,
       celcius:true});
+      //let now = new Date();
+      //let time = now.getTime();
+      //let timeOffset = now.getTimezoneOffset()*60000;
+      //let currentTime = Date(time + timeOffset);
 
    
     function updateWeatherInfo (response){
-      console.log(response.data);  
+      console.log(response.data);
        setWeatherData({
         ready: true,
         coordinates: response.data.coord,
@@ -33,6 +37,11 @@ import Current from "./Current";
         country: response.data.sys.country,
       });
     }
+    //sunrise: response.data.sys.sunrise,
+        //sunset: response.data.sys.sunset,
+        //timezone: response.data.timezone,
+        //sunriseTime: (response.data.sys.sunrise*1000+(timeOffset))+(response.data.timezone*1000),
+        //sunsetTime: (response.data.sys.sunset*1000+(timeOffset))+(response.data.timezone*1000),
   
     function searchCity(){
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit.system}&appid=7f10d25441a1a7ff7317938abc53019d`;
@@ -54,8 +63,8 @@ import Current from "./Current";
         format:"°C",
         speed:"km/h",
         fahrenheit:false,
-        celcius:true});
-        searchCity();
+        celcius:true}, [searchCity()]);
+      
     }
 
     function showFahrenheit(event){
@@ -65,10 +74,12 @@ import Current from "./Current";
         format:"°F",
         speed:"mph",
         fahrenheit:true,
-        celcius:false});
-      searchCity();
+        celcius:false},[searchCity()])
     }
 
+    //function useEffect(){
+      //searchCity(),
+      //[unit]};
   
     if (weatherData.ready) {return (
       <div className="Search">

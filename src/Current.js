@@ -37,8 +37,8 @@ export default function Current(props) {
           </div>
           <div className="col-md-2">
             <ul className="overview-details">
-              <li>Sunrise 06:46</li>
-              <li>Sunset 19:32</li>
+              <li>Sunrise </li>
+              <li>Sunset </li>
             </ul>
           </div>
         </div>
