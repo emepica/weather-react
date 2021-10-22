@@ -80,7 +80,7 @@ import Current from "./Current";
 
     useEffect(() => {
       searchCity();
-    }, [unit]);
+    });
   
     if (weatherData.ready) {return (
       <div className="Search">
