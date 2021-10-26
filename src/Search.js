@@ -36,6 +36,8 @@ import Current from "./Current";
         city: response.data.name,
         country: response.data.sys.country,
         timezone: response.data.timezone,
+        sunrise:response.data.sys.sunrise,
+        sunset: response.data.sys.sunset,
       });
     }
     //sunrise: response.data.sys.sunrise,
@@ -45,7 +47,7 @@ import Current from "./Current";
         //sunsetTime: (response.data.sys.sunset*1000+(timeOffset))+(response.data.timezone*1000),
   
     function searchCity(){
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit.system}&appid=7f10d25441a1a7ff7317938abc53019d`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit.system}&appid=2156881d774b71e347c0c828ad86a5bf`;
       axios.get(url).then(updateWeatherInfo);
     }
 
@@ -65,7 +67,8 @@ import Current from "./Current";
         speed:"km/h",
         fahrenheit:false,
         celcius:true});
-      
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d35f82d5a9018cc282cfa53744dd6b26`;
+      axios.get(url).then(updateWeatherInfo);
     }
 
     function showFahrenheit(event){
@@ -76,11 +79,13 @@ import Current from "./Current";
         speed:"mph",
         fahrenheit:true,
         celcius:false})
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=7f10d25441a1a7ff7317938abc53019d`;
+    axios.get(url).then(updateWeatherInfo);
     }
 
-    useEffect(() => {
-      searchCity();
-    });
+   // useEffect(() => {
+    //  searchCity();
+    //}, [unit]);
   
     if (weatherData.ready) {return (
       <div className="Search">

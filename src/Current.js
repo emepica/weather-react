@@ -6,7 +6,11 @@ import { FormattedDate } from "./FormattedDate";
 
 export default function Current(props) {
   console.log(props);
- 
+  //let sunrise =props.sunrise*1000;
+ // let timeOffset = props.data.date.getTimezoneOffset()*60000;
+  //let timezone = props.data.timezone*1000;
+
+ // const sunriseTime = new Date (sunrise+timeOffset+timezone);
   return (
     <div className="Current">
       <UpdateInfo date = {props.data.date} timezone={props.data.timezone}/>
@@ -38,7 +42,7 @@ export default function Current(props) {
           </div>
           <div className="col-md-2">
             <ul className="overview-details">
-              <li>Sunrise </li>
+             <li>Sunrise </li>
               <li>Sunset </li>
             </ul>
           </div>
