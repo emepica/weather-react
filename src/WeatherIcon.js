@@ -1,6 +1,5 @@
 import React from "react";
 import "./WeatherIcon.css";
-import ReactAnimatedWeather from "react-animated-weather";
 
 export default function WeatherIcon(props) {
     const codeMapping={ 
@@ -28,7 +27,6 @@ export default function WeatherIcon(props) {
 
     return (
       <div className="WeatherIcon">
-        
       <img src={iconurl} alt={props.description}/>
       </div>
         )
