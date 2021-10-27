@@ -1,7 +1,6 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.css";
 import Search from './Search';
-import Forecast from './Forecast';
 
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
      <div className="container">
         <div className="card shadow mx-auto d-flex">
           <Search defaultCity = "Brussels"/>
-          <Forecast/>
+          
         </div>
       </div>
       <footer>

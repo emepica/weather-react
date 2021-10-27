@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./Search.css";
 import axios from "axios";
 import Current from "./Current";
+import Forecast from "./Forecast";
 
 
  function Search(props){
@@ -23,7 +24,6 @@ import Current from "./Current";
       console.log(response.data);
        setWeatherData({
         ready: true,
-        coordinates: response.data.coord,
         temperature: Math.round(response.data.main.temp),
         feels: Math.round(response.data.main.feels_like),
         minTemp: Math.round(response.data.main.temp_min),
@@ -38,6 +38,7 @@ import Current from "./Current";
         timezone: response.data.timezone,
         sunrise:response.data.sys.sunrise,
         sunset: response.data.sys.sunset,
+        coord: response.data.coord,
       });
     }
     //sunrise: response.data.sys.sunrise,
@@ -129,6 +130,7 @@ import Current from "./Current";
           </div>
         </form>
         <Current data = {weatherData} unit={unit}/>
+        <Forecast coord = {weatherData.coord}/>
       </div>
     );} else {
       searchCity();
