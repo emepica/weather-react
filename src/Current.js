@@ -35,7 +35,7 @@ export default function Current(props) {
           </div>
           <div className="col-md-3">
             <ul className="overview-details">
-              <li>{props.data.minTemp} {props.unit.format} / {props.data.maxTemp}{props.unit.format}</li>
+              <li>{props.data.minTemp} {props.unit.format} | {props.data.maxTemp}{props.unit.format}</li>
               <li>Humidity: {props.data.humidity}%</li>
               <li>Wind: {Math.round(props.data.wind)} {props.unit.speed}</li>
             </ul>
