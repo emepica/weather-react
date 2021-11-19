@@ -8,6 +8,8 @@ import Forecast from "./Forecast";
  function Search(props){
     const [weatherData, setWeatherData] = useState({ ready: false });
     const [city, setCity] = useState(props.defaultCity);
+    const [lat,setLat] = useState(props.lat);
+    const [lon, setLon]= useState(props.lon);
     const [unit, setUnit] = useState({
       system:"metric",
       format:"°C",
@@ -36,6 +38,8 @@ import Forecast from "./Forecast";
         sunset: response.data.sys.sunset,
         coord: response.data.coord,
       });
+      setLat(response.data.coord.lat);
+      setLon(response.data.coord.lon);
     }
   
     function searchCity(){
@@ -73,7 +77,7 @@ import Forecast from "./Forecast";
         speed:"km/h",
         fahrenheit:false,
         celcius:true});
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d35f82d5a9018cc282cfa53744dd6b26`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=d35f82d5a9018cc282cfa53744dd6b26`;
       axios.get(url).then(updateWeatherInfo);
     }
 
@@ -85,7 +89,7 @@ import Forecast from "./Forecast";
         speed:"mph",
         fahrenheit:true,
         celcius:false})
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=7f10d25441a1a7ff7317938abc53019d`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=7f10d25441a1a7ff7317938abc53019d`;
     axios.get(url).then(updateWeatherInfo);
     }
 
