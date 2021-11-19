@@ -41,4 +41,7 @@
   border-color:rgb(179, 150, 179) !important;
   color:#6c757d!important;
 }
+.celciusBtn, .fahrenheitBtn{
+margin-bottom: 10px;
+}
   
