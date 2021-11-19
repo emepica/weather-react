@@ -130,7 +130,7 @@ import Forecast from "./Forecast";
           </div>
         </form>
         <Current data = {weatherData} unit={unit}/>
-        <Forecast coord = {weatherData.coord}/>
+        <Forecast coord = {weatherData.coord} unit={unit}/>
       </div>
     );} else {
       searchCity();

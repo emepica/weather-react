@@ -1,40 +1,47 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
 import "./Forecast.css";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import WeatherIcon from "./WeatherIcon";
-import { Axios } from "axios";
+
+import ForecastDay from "./ForecastDay";
+
 
 export default function Forecast(props){
+    let [loaded, setLoaded]=useState(false);
+    let [forecastData,setForecastData]=useState(null);
+    console.log(props);
+
     function handleResponse(response){
-        console.log(response);
+        setForecastData(response.data.daily);
+        setLoaded(true);
     }
 
-    let lat = props.coord.lat;
-    let lon = props.coord.lon;
-    let apiURL=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&unit=metric&appid=d35f82d5a9018cc282cfa53744dd6b26`;
-    
-    Axios.get(apiURL).then(handleResponse);
+    if (loaded){
 
     return(
         <div className="Forecast">
-            Forecast under construction
-            <Loader
-        type="ThreeDots"
-        color= "thistle"
-        height={100}
-        width={100}
-      />
       <div className="row">
           <div className="col">
-              <div className="Forecast-day">Thu</div>
-              <div className="Forecast-icon"><WeatherIcon data="01d"/></div>
-
-              <div className="Forecast-temperature">
-                  <span className="forecast-minTemp">9</span> | <span className="forecast-maxTemp">14</span>
-              </div>
+              <ForecastDay data={forecastData[0]}/>
           </div>
       </div>
         </div>
     )
+
+    }
+    else {
+        let unit = props.unit.system;
+        let lat = props.coord.lat;
+        let lon = props.coord.lon;
+
+        if (unit==="metric"){
+            let apiURL=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=d35f82d5a9018cc282cfa53744dd6b26`;
+            axios.get(apiURL).then(handleResponse);
+            return(null);
+        } else if (unit!=="metric"){
+                let apiURL=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=d35f82d5a9018cc282cfa53744dd6b26`;
+                axios.get(apiURL).then(handleResponse);
+                return(null);}
+        }
+    
 }
