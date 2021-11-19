@@ -14,10 +14,6 @@ import Forecast from "./Forecast";
       speed:"km/h",
       fahrenheit:false,
       celcius:true});
-      //let now = new Date();
-      //let time = now.getTime();
-      //let timeOffset = now.getTimezoneOffset()*60000;
-      //let currentTime = Date(time + timeOffset);
 
    
     function updateWeatherInfo (response){
@@ -41,14 +37,17 @@ import Forecast from "./Forecast";
         coord: response.data.coord,
       });
     }
-    //sunrise: response.data.sys.sunrise,
-        //sunset: response.data.sys.sunset,
-        
-        //sunriseTime: (response.data.sys.sunrise*1000+(timeOffset))+(response.data.timezone*1000),
-        //sunsetTime: (response.data.sys.sunset*1000+(timeOffset))+(response.data.timezone*1000),
   
     function searchCity(){
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit.system}&appid=2156881d774b71e347c0c828ad86a5bf`;
+      axios.get(url).then(updateWeatherInfo);
+    }
+
+    function searchCurrentCity(position){
+      console.log(position)
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit.system}&appid=2156881d774b71e347c0c828ad86a5bf`;
       axios.get(url).then(updateWeatherInfo);
     }
 
@@ -56,6 +55,12 @@ import Forecast from "./Forecast";
       event.preventDefault();
       searchCity(); 
     }
+
+    function retrieveCurrentLocation(event){
+      event.preventDefault();
+      navigator.geolocation.getCurrentPosition(searchCurrentCity);
+    }
+
     function handleCity(event){
     setCity(event.target.value);
     }
@@ -100,8 +105,7 @@ import Forecast from "./Forecast";
             className={`btn btn-outline-secondary mt-3 ms-2 shadow-sm fahrenheitBtn ${unit.fahrenheit ? "active":""}`}
             onClick={showFahrenheit}> °F </button>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form className="search-form" onSubmit={handleSubmit}>
             <input
               type="text"
               className="input-form mb-3 shadow-sm search-bar"
@@ -119,15 +123,15 @@ import Forecast from "./Forecast";
             >
               Search
             </button>
-  
-            <button
+        </form>
+        <form className="current-location-form" onSubmit={retrieveCurrentLocation}>
+        <button
               type="submit"
               className="btn btn-outline-secondary mb-3 shadow-sm search-bar right "
               id="button-current-location-submit"
             >
               Current Location
             </button>
-          </div>
         </form>
         <Current data = {weatherData} unit={unit}/>
         <Forecast coord = {weatherData.coord} unit={unit}/>

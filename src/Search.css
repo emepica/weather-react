@@ -1,6 +1,7 @@
 .Search form {
     margin-top: 20px;
-    padding: 0px 20px;
+    padding: 0px;
+    display: inline;
   }
 
   .search-bar {
