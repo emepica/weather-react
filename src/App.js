@@ -9,7 +9,6 @@ function App() {
   const [lon, setLon]= useState(null);
   
   function identifyCurrentCity(position){
-    console.log(position)
       setLat (position.coords.latitude);
       setLon (position.coords.longitude);
   }
