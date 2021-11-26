@@ -7,7 +7,6 @@ import ForecastDay from "./ForecastDay";
 export default function Forecast(props){
     let [loaded, setLoaded]=useState(false);
     let [forecastData,setForecastData]=useState(null);
-    console.log(props);
 
     useEffect(()=>{
         setLoaded(false);

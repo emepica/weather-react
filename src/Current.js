@@ -2,7 +2,8 @@ import React from "react";
 import "./Current.css";
 import UpdateInfo from "./UpdateInfo";
 import CurrentTemperature from "./CurrentTemperature";
-import { FormattedDate } from "./FormattedDate";
+import FormattedDate from "./FormattedDate";
+import Day from "./Day";
 
 export default function Current(props) {
 
@@ -41,13 +42,13 @@ export default function Current(props) {
         {props.data.country}
       </span>
       <p className="info" id="locale-date">
-        <FormattedDate date = {props.data.date} timezone={props.data.timezone}/>
+      <Day date = {props.data.date} timezone={props.data.timezone}/>
       </p>
       <div className="container">
         <div className="row">
           <div className="col-md-3">
             <ul className="overview-info">
-              <li>Today: </li>
+              <li><FormattedDate date = {props.data.date} timezone={props.data.timezone}/> </li>
               <li className="text-capitalize">{props.data.description}</li>
               <li>Feels like {props.data.feels}{props.unit.format}</li>
             </ul>

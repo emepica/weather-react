@@ -19,7 +19,6 @@ import Forecast from "./Forecast";
 
    
     function updateWeatherInfo (response){
-      console.log(response.data);
        setWeatherData({
         ready: true,
         temperature: Math.round(response.data.main.temp),
