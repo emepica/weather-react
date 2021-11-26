@@ -14,16 +14,14 @@ export default function UpdateInfo(props) {
   let date =props.date.getDate();
   let month =months[props.date.getMonth()];
   let year =props.date.getUTCFullYear();
-  //let timeOffset = props.date.getTimeOffset()/60;
-  //let adjustedDate= props.date.getDate()-props.date.getTimeOffset();
-
+  let currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   return (
     <div className="UpdateInfo">
       <span>
         Last updated: {day}, {month} {date} {year}, {hours}:{minutes}
         <br />
-        Current timezone : Europe/Brussels
+        Current timezone : {currentTimezone}
       </span>
     </div>
   );
